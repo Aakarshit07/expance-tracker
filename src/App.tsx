@@ -1,25 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import ExpenseProvider from './context/ExpenseContext';
+import Header from './components/Header';
+import ExpenseList from './components/ExpenseList';
+import ExpenseSummary from './components/ExpenseSummary';
+import ExpenseTrends from './components/ExpenseTrends';
+import AddExpenseForm from './components/AddExpenseForm';
+import AddIncomeForm from './components/AddIncomeForm';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ExpenseProvider>
+      <div className="App">
+        {/* Header Component */}
+        <Header />
+
+        {/* Main Content */}
+        <div className="main-container">
+          {/* Wallet Balance and Add Income */}
+          <div className="wallet-section">
+            <AddIncomeForm />
+          </div>
+
+          {/* Expenses Summary and Trends */}
+          <div className="summary-section">
+            <ExpenseSummary />
+            <ExpenseTrends />
+          </div>
+
+          {/* Add Expense Form */}
+          <AddExpenseForm />
+
+          {/* Expense List */}
+          <ExpenseList />
+        </div>
+      </div>
+    </ExpenseProvider>
   );
 }
 
